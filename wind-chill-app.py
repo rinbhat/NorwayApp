@@ -262,7 +262,7 @@ elif multi_cities and st.session_state.page in ["Multi-city","Heatmap","Cold Met
             for city in multi_cities:
                 df = city_dfs[city].iloc[:hour_idx+1].copy()
                 with st.expander(f"{city} Forecast (First {hour_idx+1} hours)"):
-                    df_style = df.style.applymap(
+                    df_style = df.style.map(
                         lambda x: "background-color:red;color:white;"
                         if isinstance(x,float) and x<=alert_threshold else "",
                         subset=["Wind Chill (°C)"]
